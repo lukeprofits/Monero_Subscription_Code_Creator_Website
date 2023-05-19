@@ -5,4 +5,6 @@
 
 A Flask website for creating custom `monero-subscriptions` codes (and their matching payment_ids)
 
+A copy of this site [is hosted here.](https://monerosub.tux.pizza/) 
+
 You can use this instead of [Monero Subscription Code Creator](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
