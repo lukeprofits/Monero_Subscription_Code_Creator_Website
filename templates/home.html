@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monero Subscription Code Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        @font-face {
+            font-family: NunitoSans;
+            src: url('/static/font/NunitoSans-Regular.ttf');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="/static/monerologo.png" alt="Monero Logo">
+        </div>
+        <h1>Monero Subscription Code Generator:</h1>
+
+        <form id="subscription-form" method="post" action="/">
+            <div class="form-group">
+                <label for="custom-label">Subscription Name: </label>
+                <input type="text" class="form-control" id="custom-label" name="custom_label" style="width: 50%" required maxlength="50">
+            </div>
+
+            <div class="form-group">
+                <label for="sellers-wallet">Seller's Wallet: </label>
+                <input type="text" class="form-control long-input" id="sellers-wallet" name="sellers_wallet" style="width: 75%" pattern="4.{94}" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="currency">Price Based On Currency: </label>
+                    <select class="form-control" id="currency" name="currency">
+                        <option value="USD" selected>USD</option>
+                        <option value="XMR">XMR</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Price Per Billing Cycle: </label>
+                    <input type="text" pattern="^\d+(\.\d{1})?$" step="0.01" class="form-control" id="amount" name="amount" style="width: 22%" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentid">Payment ID: </label>
+                <input type="text" class="form-control" id="paymentid" name="paymentid" placeholder="Auto-Generated" style="width: 30%" pattern="^$|^([0-9a-f]{16})$">
+            </div>
+
+            <div class="form-group">
+                <label for="start-date">Start Date: </label>
+                <input type="date" class="form-control" id="start-date" name="start_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="billing-cycle-days">Days In Billing Cycle: </label>
+                <input type="number" class="form-control" id="billing-cycle-days" name="billing_cycle_days" style="width: 7%" required step="1">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate Subscription Code</button>
+        </form>
+        {% if code %}
+        <div id="result-container">
+            <div class="result-section">
+                <div class="result-item">
+                    <h2>Subscription Code</h2>
+                    <div class="result">
+                        <textarea id="generated-code" readonly>{{ code }}</textarea>
+                        <button onclick="navigator.clipboard.writeText('{{ code }}')" class="btn btn-secondary">Copy to Clipboard</button>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <h2>Payment ID</h2>
+                    <div class="result">
+                        <textarea id="payment-id" readonly>{{ payment_id }}</textarea>
+                        <button onclick="navigator.clipboard.writeText('{{ payment_id }}')" class="btn btn-secondary">Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <!--{% if code %}
+        <div id="result-container">
+            <h2>Your Subscription Code</h2>
+            <textarea id="generated-code" readonly>{{ code }}</textarea>
+            <button onclick="navigator.clipboard.writeText('{{ code }}')" class="btn btn-secondary">Copy to Clipboard</button>
+        </div>
+        {% endif %}-->
+    </div>
+</body>
+</html>

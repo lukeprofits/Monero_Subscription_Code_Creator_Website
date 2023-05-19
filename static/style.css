@@ -1,0 +1,178 @@
+:root {
+    --ui-title-bar: #222222;
+    --ui-overall-background: #1D1D1D;
+    --ui-button-a: #F96800;
+    --ui-button-a-font: #F0FFFF;
+    --ui-button-b: #716F74;
+    --ui-button-b-font: #FFF9FB;
+    --ui-main-font: #F4F6EE;
+    --ui-sub-font: #A7B2C7;
+    --ui-lines: #696563;
+    --ui-outline: #2E2E2E;
+    --ui-barely-visible: #373737;
+    --ui-regular: #FCFCFC;
+    --monero-grey: #4c4c4c;
+    --monero-orange: #ff6600;
+    --monero-white: #FFFFFF;
+    --monero-grayscale-top: #7D7D7D;
+    --monero-grayscale-bottom: #505050;
+}
+
+body {
+    font-family: 'NunitoSans', sans-serif;
+    background-color: var(--ui-overall-background);
+    color: var(--ui-main-font);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+    color: var(--monero-orange);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    background-color: var(--ui-title-bar);
+    border: 1px solid var(--ui-outline);
+    color: var(--ui-main-font);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--monero-orange);
+}
+
+.form-text.text-muted {
+    color: var(--ui-sub-font);
+}
+
+.btn-primary {
+    background-color: var(--ui-button-a);
+    border: none;
+    color: var(--ui-button-a-font);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--monero-orange);
+}
+
+#result-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#generated-code {
+    width: 100%;
+    background-color: var(--ui-barely-visible);
+    border: 1px solid var(--ui-outline);
+    color: var(--ui-main-font);
+    border-radius: 5px;
+    padding: 10px;
+    height: 100px;
+}
+
+.btn-secondary {
+    margin-top: 10px;
+    background-color: var(--ui-button-b);
+    border: none;
+    color: var(--ui-button-b-font);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--monero-grey);
+}
+
+
+.result-section {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 10px;  /* To add space between the items */
+    margin-top: 20px;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* to align the buttons at the bottom */
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+}
+
+.result textarea, .result input {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--ui-regular);
+    color: var(--ui-main-font);
+    border-radius: 10px;
+    border: 1px solid var(--ui-outline);
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+.result textarea::-webkit-scrollbar {
+    width: 0px; /* Chrome, Safari, Edge */
+}
+
+#generated-code,
+#payment-id {
+    width: 100%;
+    background-color: var(--ui-barely-visible);
+    border: 1px solid var(--ui-outline);
+    color: var(--ui-main-font);
+    border-radius: 5px;
+    padding: 10px;
+    height: 100px;
+}
+
+.result-field,
+.input-field {
+    /* your existing styles */
+    box-sizing: border-box;
+}
+
+.result textarea,
+.result button {
+    box-sizing: border-box;
+    width: 100%; /* make sure the width is explicitly set */
+}
+
+.result textarea {
+    resize: none; /* Disables resizing */
+}
+
+
