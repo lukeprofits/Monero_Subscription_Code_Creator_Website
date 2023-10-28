@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Monero Subscription Code Generator</title>
+    <title>{{ website_title }}</title>
     <link rel="stylesheet" href="/static/style.css">
     <style>
         @font-face {
@@ -15,19 +15,14 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="/static/monerologo.png" alt="Monero Logo">
+            <img src={{ website_logo_image }} alt="Monero Logo">
         </div>
-        <h1>Monero Subscription Code Generator:</h1>
+        <h1>{{ website_title }}:</h1>
 
         <form id="subscription-form" method="post" action="/">
             <div class="form-group">
-                <label for="custom-label">Subscription Name: </label>
-                <input type="text" class="form-control" id="custom-label" name="custom_label" style="width: 50%" required maxlength="50">
-            </div>
-
-            <div class="form-group">
-                <label for="sellers-wallet">Seller's Wallet: </label>
-                <input type="text" class="form-control long-input" id="sellers-wallet" name="sellers_wallet" style="width: 75%" pattern="4.{94}" required>
+                <label for="custom-label">Payment Request Name: </label>
+                <input type="text" class="form-control" id="custom-label" name="custom_label" style="width: 50%" required maxlength="80">
             </div>
 
             <div class="form-row">
@@ -46,8 +41,9 @@
             </div>
 
             <div class="form-group">
-                <label for="paymentid">Payment ID: </label>
-                <input type="text" class="form-control" id="paymentid" name="paymentid" placeholder="Auto-Generated" style="width: 30%" pattern="^$|^([0-9a-f]{16})$">
+                <label for="billing-cycle-days">Billing Every: </label>
+                <input type="number" class="form-control" id="billing-cycle-days" name="days_per_billing_cycle" style="width: 7%" required step="1">
+                <label for="billing-cycle-days">Day(s) </label>
             </div>
 
             <div class="form-group">
@@ -56,11 +52,26 @@
             </div>
 
             <div class="form-group">
-                <label for="billing-cycle-days">Days In Billing Cycle: </label>
-                <input type="number" class="form-control" id="billing-cycle-days" name="billing_cycle_days" style="width: 7%" required step="1">
+                <label for="number-of-payments">Number of Payments (For recurring until canceled, use 0): </label>
+                <input type="number" class="form-control" id="number-of-payments" name="number_of_payments" style="width: 7%" required step="1">
             </div>
 
-            <button type="submit" class="btn btn-primary">Generate Subscription Code</button>
+            <div class="form-group">
+                <label for="sellers-wallet">Seller's Wallet: </label>
+                <input type="text" class="form-control long-input" id="sellers-wallet" name="sellers_wallet" style="width: 75%" pattern="4.{94}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custom-label">Change Indicator URL: </label>
+                <input type="text" class="form-control" id="change-indicator-url" name="change_indicator_url" placeholder="Optional" style="width: 60%">
+            </div>
+
+            <div class="form-group">
+                <label for="paymentid">Payment ID: </label>
+                <input type="text" class="form-control" id="paymentid" name="paymentid" placeholder="Auto-Generated" style="width: 30%" pattern="^$|^([0-9a-f]{16})$">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate Monero Payment Request</button>
         </form>
         {% if code %}
         <div id="result-container">
@@ -82,15 +93,6 @@
             </div>
         </div>
         {% endif %}
-
-
-        <!--{% if code %}
-        <div id="result-container">
-            <h2>Your Subscription Code</h2>
-            <textarea id="generated-code" readonly>{{ code }}</textarea>
-            <button onclick="navigator.clipboard.writeText('{{ code }}')" class="btn btn-secondary">Copy to Clipboard</button>
-        </div>
-        {% endif %}-->
     </div>
 </body>
 </html>
