@@ -7,7 +7,7 @@ A Flask website for creating custom `monero-request` codes (and their matching p
 
 A copy of this site [is hosted here.](https://monerosub.tux.pizza/) 
 
-Documentation on the [Monero Payment Request Protocol can be found here.](https://github.com/lukeprofits/Monero_Payment_Request_Standard)
+Documentation on the [Monero Payment Request Protocol](https://github.com/lukeprofits/Monero_Payment_Request_Standard) can be found here.
 
 # Donate
 - XMR: `4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S`
